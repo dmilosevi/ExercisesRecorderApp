@@ -14,13 +14,15 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional //Dodan zbog "deleteExercise"
 public class ExerciseService {
-	private final ExerciseRepository exerciseRepository;
 
-	@Autowired
+	/*@Autowired
 	public ExerciseService(ExerciseRepository exerciseRepository) {
 		super();
 		this.exerciseRepository = exerciseRepository;
-	}
+	}*/
+	
+	@Autowired
+	private ExerciseRepository exerciseRepository;
 	
 	public Exercise addExercise(Exercise exercise) {
 		return exerciseRepository.save(exercise);

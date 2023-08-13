@@ -15,7 +15,7 @@ public class Exercise implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	//@Column(nullable = false, updatable = false)
 	private Long id;
 	private String name;
 	private String numberOfSets;
@@ -23,7 +23,7 @@ public class Exercise implements Serializable{
 	private BigDecimal weight;
 	private String bodyPart;
 	
-	public Exercise() {}
+	/*public Exercise() {}
 	
 	public Exercise(String name, String numberOfSets, String numberOfReps, String bodyPart, BigDecimal weight) {
 		super();
@@ -32,7 +32,7 @@ public class Exercise implements Serializable{
 		this.numberOfReps = numberOfReps;
 		this.weight = weight;
 		this.bodyPart = bodyPart;
-	}
+	}*/
 
 	public Long getId() {
 		return id;
@@ -87,6 +87,7 @@ public class Exercise implements Serializable{
 		this.bodyPart = bodyPart;
 	}
 	
+	/*
 	@Override
 	public String toString() { 
 		return "Exercise{" +
@@ -97,6 +98,6 @@ public class Exercise implements Serializable{
 				", weight='" + weight + '\'' +
 				", bodyPart='" + bodyPart + '\'' +
 				'}';
-	}
+	}*/
 
 }

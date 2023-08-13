@@ -2,6 +2,7 @@ package com.app.exercisesrecorder.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,13 +20,17 @@ import com.app.exercisesrecorder.service.ExerciseService;
 @RestController
 @RequestMapping("/exercises")
 public class ExerciseController {
-	 private final ExerciseService exerciseService;
+		
+		/*private final ExerciseService exerciseService;
 
 	    public ExerciseController(ExerciseService exerciseService) {
 	        this.exerciseService = exerciseService;
-	    }
+	    }*/
+	
+		@Autowired
+		private ExerciseService exerciseService;
 
-	    @GetMapping("/all")
+	    @GetMapping("/all") //+
 	    public ResponseEntity<List<Exercise>> getAllExercises () {
 	        List<Exercise> exercises = exerciseService.findAllExercises();
 	        return new ResponseEntity<>(exercises, HttpStatus.OK);
@@ -37,7 +42,7 @@ public class ExerciseController {
 	        return new ResponseEntity<>(exercise, HttpStatus.OK);
 	    }
 
-	    @PostMapping("/add")
+	    @PostMapping("/add") //+
 	    public ResponseEntity<Exercise> addExercise(@RequestBody Exercise exercise) {
 	    	Exercise newExercise = exerciseService.addExercise(exercise);
 	        return new ResponseEntity<>(newExercise, HttpStatus.CREATED);
