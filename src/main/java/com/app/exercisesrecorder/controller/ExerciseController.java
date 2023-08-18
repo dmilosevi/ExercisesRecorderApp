@@ -50,9 +50,9 @@ public class ExerciseController {
 	        return new ResponseEntity<>(newExercise, HttpStatus.CREATED);
 	    }
 
-	    @PutMapping("/update")
-	    public ResponseEntity<Exercise> updateExercise(@RequestBody Exercise exercise) {
-	    	Exercise updateExercise = exerciseService.updateExercise(exercise);
+	    @PutMapping("/update/{id}")
+	    public ResponseEntity<Exercise> updateExercise(@RequestBody Exercise updatedExercise, @PathVariable("id") Long id) {
+	    	Exercise updateExercise = exerciseService.updateExercise(updatedExercise, id);
 	        return new ResponseEntity<>(updateExercise, HttpStatus.OK);
 	    }
 
