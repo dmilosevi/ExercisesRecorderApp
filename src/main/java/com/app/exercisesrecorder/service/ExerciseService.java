@@ -41,16 +41,19 @@ public class ExerciseService {
 					existingExercise.setNumberOfReps(updatedExercise.getNumberOfReps());
 					existingExercise.setWeight(updatedExercise.getWeight());
 					return exerciseRepository.save(existingExercise);
-				}).orElseThrow(() -> new ExerciseNotFoundException("Exercise by id " + id + " was not found"));
+				}).orElseThrow(() -> new ExerciseNotFoundException("Vježba s id-em " + id + " nije pronađena"));
 	}  
 	
 	public void deleteExercise(Long id) {
-		exerciseRepository.deleteExerciseById(id);;
+		if(!exerciseRepository.existsExerciseById(id)) {
+			throw new ExerciseNotFoundException("Vježba s id-em " + id + " nije pronađena");
+		}
+		exerciseRepository.deleteExerciseById(id);
 	}
 	
 	public Exercise findExerciseById(Long id) {
 		return exerciseRepository.findExerciseById(id)
-				.orElseThrow(() -> new ExerciseNotFoundException("Exercise by id " + id + " was not found"));
+				.orElseThrow(() -> new ExerciseNotFoundException("Vježba s id-em " + id + " nije pronađena"));
 				
 	}
 }
