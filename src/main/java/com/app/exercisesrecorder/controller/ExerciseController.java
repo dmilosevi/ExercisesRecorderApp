@@ -22,17 +22,11 @@ import com.app.exercisesrecorder.service.ExerciseService;
 @CrossOrigin("http://localhost:3000")
 @RequestMapping("/exercises")
 public class ExerciseController {
-		
-		/*private final ExerciseService exerciseService;
-
-	    public ExerciseController(ExerciseService exerciseService) {
-	        this.exerciseService = exerciseService;
-	    }*/
 	
 		@Autowired
 		private ExerciseService exerciseService;
 
-	    @GetMapping("/all") //+
+	    @GetMapping("/all")
 	    public ResponseEntity<List<Exercise>> getAllExercises () {
 	        List<Exercise> exercises = exerciseService.findAllExercises();
 	        return new ResponseEntity<>(exercises, HttpStatus.OK);
@@ -44,7 +38,7 @@ public class ExerciseController {
 	        return new ResponseEntity<>(exercise, HttpStatus.OK);
 	    }
 
-	    @PostMapping("/add") //+
+	    @PostMapping("/add")
 	    public ResponseEntity<Exercise> addExercise(@RequestBody Exercise exercise) {
 	    	Exercise newExercise = exerciseService.addExercise(exercise);
 	        return new ResponseEntity<>(newExercise, HttpStatus.CREATED);
@@ -55,19 +49,11 @@ public class ExerciseController {
 	    	Exercise updateExercise = exerciseService.updateExercise(updatedExercise, id);
 	        return new ResponseEntity<>(updateExercise, HttpStatus.OK);
 	    }
-
-	    /*@DeleteMapping("/delete/{id}")
-	    public ResponseEntity<?> deleteExercise(@PathVariable("id") Long id) {
-	    	exerciseService.deleteExercise(id);
-	        return new ResponseEntity<>(HttpStatus.OK);
-	    }*/
 	    
 	    @DeleteMapping("/delete/{id}")
 	    public ResponseEntity<String> deleteExercise(@PathVariable("id") Long id) {
 	    	exerciseService.deleteExercise(id);
 	        return new ResponseEntity<>("Vježba s id-em " + id + " je izbrisana", HttpStatus.OK);
-	    }
+	    }   
 	    
-	    
-
 }

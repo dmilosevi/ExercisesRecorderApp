@@ -12,14 +12,8 @@ import com.app.exercisesrecorder.repository.ExerciseRepository;
 import jakarta.transaction.Transactional;
 
 @Service
-@Transactional //Dodan zbog "deleteExercise"
+@Transactional
 public class ExerciseService {
-
-	/*@Autowired
-	public ExerciseService(ExerciseRepository exerciseRepository) {
-		super();
-		this.exerciseRepository = exerciseRepository;
-	}*/
 	
 	@Autowired
 	private ExerciseRepository exerciseRepository;
